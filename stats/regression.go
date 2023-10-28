@@ -1,4 +1,4 @@
-package regression
+package stats
 
 import (
 	"encoding/csv"
@@ -7,11 +7,11 @@ import (
 	"strconv"
 )
 
-func LeastSquares(name string) (Result, error) {
+func LoadPoints(name string) ([]Point, error) {
 	file, err := os.Open(name)
 
 	if err != nil {
-		return Result{}, nil
+		return []Point{}, nil
 	}
 
 	reader := csv.NewReader(file)
@@ -27,7 +27,7 @@ func LeastSquares(name string) (Result, error) {
 		points[i] = Point{X: x, Y: y}
 	}
 
-	return calculate(points), nil
+	return points, nil
 }
 
 type Point struct {
@@ -39,16 +39,7 @@ func (point Point) String() string {
 	return fmt.Sprintf("(%.4f, %.4f)", point.X, point.Y)
 }
 
-type Result struct {
-	M float64
-	B float64
-}
-
-func (r Result) String() string {
-	return fmt.Sprintf("y=%.4fx+%.4f", r.M, r.B)
-}
-
-func calculate(points []Point) Result {
+func LeastSquares(points []Point) LinearTransform {
 	sumX := 0.0
 	sumY := 0.0
 	sumXX := 0.0
@@ -66,7 +57,7 @@ func calculate(points []Point) Result {
 	m := (n*sumXY - sumX*sumY) / (n*sumXX - sumX*sumX)
 	b := (sumY - m*sumX) / n
 
-	return Result{
+	return LinearTransform{
 		M: m,
 		B: b,
 	}
