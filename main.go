@@ -11,19 +11,29 @@ func main() {
 
 	lt := stats.LeastSquares(points)
 
-	waterMass := 0.16842
-	waterTemp := 51.0
+	var waterTemp, waterMass, iceTemp, iceMass float64
 
-	iceMass := 0.01285
-	iceTemp := 0.0
+	fmt.Print("water temp: ")
+	fmt.Scanf("%f", &waterTemp)
+	fmt.Print("water mass: ")
+	fmt.Scanf("%f", &waterMass)
+	fmt.Print("ice temp: ")
+	fmt.Scanf("%f", &iceTemp)
+	fmt.Print("ice mass: ")
+	fmt.Scanf("%f", &iceMass)
 
 	x := thermodynamics.EquilibriumTemperature(waterMass, waterTemp, iceMass, iceTemp)
 
-	estimate := lt.Apply(x)
+	estimatedTemp := lt.Apply(x)
 
-	actual := 42.5
+	fmt.Printf("estimated temp: %.4f\n", estimatedTemp)
 
-	error := stats.ApproximationError(estimate, actual)
+	var actualTemp float64
 
-	fmt.Println(error)
+	fmt.Print("actual temp: ")
+	fmt.Scanf("%f", &actualTemp)
+
+	error := stats.ApproximationError(estimatedTemp, actualTemp)
+
+	fmt.Printf("percent error: %.4f\n", error*100)
 }
