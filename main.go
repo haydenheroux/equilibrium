@@ -1,7 +1,9 @@
 package main
 
-func main() {
-	r, _ := LeastSquares("data.csv")
+import "thermodynamics/leastsquares"
 
-	println(r.String())
+func main() {
+	result, _ := leastsquares.LeastSquares("data.csv")
+
+	println(result.String())
 }
