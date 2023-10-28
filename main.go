@@ -1,8 +1,8 @@
 package main
 
 import (
+	"equilibrium/stats"
 	"fmt"
-	"thermodynamics/stats"
 )
 
 func main() {
