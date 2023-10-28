@@ -2,6 +2,7 @@ package main
 
 import (
 	"equilibrium/stats"
+	"equilibrium/thermodynamics"
 	"fmt"
 )
 
@@ -10,7 +11,13 @@ func main() {
 
 	lt := stats.LeastSquares(points)
 
-	x := 41.7454137
+	waterMass := 0.16842
+	waterTemp := 51.0
+
+	iceMass := 0.01285
+	iceTemp := 0.0
+
+	x := thermodynamics.EquilibriumTemperature(waterMass, waterTemp, iceMass, iceTemp)
 
 	y := lt.Apply(x)
 
