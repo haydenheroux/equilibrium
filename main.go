@@ -19,7 +19,11 @@ func main() {
 
 	x := thermodynamics.EquilibriumTemperature(waterMass, waterTemp, iceMass, iceTemp)
 
-	y := lt.Apply(x)
+	estimate := lt.Apply(x)
 
-	fmt.Println(y)
+	actual := 42.5
+
+	error := stats.ApproximationError(estimate, actual)
+
+	fmt.Println(error)
 }
