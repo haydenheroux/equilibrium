@@ -1,9 +1,9 @@
 package main
 
-import "thermodynamics/leastsquares"
+import "thermodynamics/regression"
 
 func main() {
-	result, _ := leastsquares.LeastSquares("data.csv")
+	result, _ := regression.LeastSquares("data.csv")
 
 	println(result.String())
 }

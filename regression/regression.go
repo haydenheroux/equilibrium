@@ -1,4 +1,4 @@
-package leastsquares
+package regression
 
 import (
 	"encoding/csv"
