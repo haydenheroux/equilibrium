@@ -11,10 +11,14 @@ func main() {
 
 	lt := stats.LeastSquares(points)
 
-	var initialMass, waterTemp, postWaterMass, iceTemp, postIceMass float64
+	var cupMass, cupTemp, setupMass, waterTemp, postWaterMass, iceTemp, postIceMass float64
 
-	fmt.Print("initial mass: ")
-	fmt.Scanf("%f", &initialMass)
+	fmt.Print("cup mass: ")
+	fmt.Scanf("%f", &cupMass)
+	fmt.Print("cup temp: ")
+	fmt.Scanf("%f", &cupTemp)
+	fmt.Print("setup mass: ")
+	fmt.Scanf("%f", &setupMass)
 	fmt.Print("water temp: ")
 	fmt.Scanf("%f", &waterTemp)
 	fmt.Print("post-water mass: ")
@@ -24,10 +28,10 @@ func main() {
 	fmt.Print("post-ice mass: ")
 	fmt.Scanf("%f", &postIceMass)
 
-	waterMass := postWaterMass - initialMass
+	waterMass := postWaterMass - setupMass
 	iceMass := postIceMass - postWaterMass
 
-	x := thermodynamics.EquilibriumTemperature(waterMass, waterTemp, iceMass, iceTemp)
+	x := thermodynamics.EquilibriumTemperature(cupMass, cupTemp, waterMass, waterTemp, iceMass, iceTemp)
 
 	estimatedTemp := lt.Apply(x)
 
