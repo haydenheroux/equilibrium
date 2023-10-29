@@ -7,9 +7,7 @@ import (
 )
 
 func main() {
-	points, _ := stats.LoadPoints("data.csv")
-
-	lt := stats.LeastSquares(points)
+	replayed, _ := Replay("replay.csv")
 
 	var cupMass, cupTemp, setupMass, waterTemp, postWaterMass, iceTemp, postIceMass float64
 
@@ -33,7 +31,7 @@ func main() {
 
 	x := thermodynamics.EquilibriumTemperature(cupMass, cupTemp, waterMass, waterTemp, iceMass, iceTemp)
 
-	estimatedTemp := lt.Apply(x)
+	estimatedTemp := stats.LeastSquares(replayed).Apply(x)
 
 	fmt.Printf("estimated temp: %.4f\n", estimatedTemp)
 
