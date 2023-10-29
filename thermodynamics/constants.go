@@ -1,8 +1,8 @@
 package thermodynamics
 
-const WaterSpecificHeat = 4186.0
+const WaterSpecificHeat = 4.186
 
-const IceSpecificHeat = 2093.0
-const IceLatentHeatFusion = 333000.0
+const IceSpecificHeat = 2.093
+const IceLatentHeatFusion = 333.0
 
-const AluminumSpecificHeat = 890.0
+const AluminumSpecificHeat = 0.89

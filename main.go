@@ -13,19 +13,19 @@ func main() {
 
 	var cupMass, cupTemp, setupMass, waterTemp, postWaterMass, iceTemp, postIceMass float64
 
-	fmt.Print("cup mass: ")
+	fmt.Print("cup mass (g): ")
 	fmt.Scanf("%f", &cupMass)
-	fmt.Print("cup temp: ")
+	fmt.Print("cup temp (C): ")
 	fmt.Scanf("%f", &cupTemp)
-	fmt.Print("setup mass: ")
+	fmt.Print("setup mass (g): ")
 	fmt.Scanf("%f", &setupMass)
-	fmt.Print("water temp: ")
+	fmt.Print("water temp (C): ")
 	fmt.Scanf("%f", &waterTemp)
-	fmt.Print("post-water mass: ")
+	fmt.Print("post-water mass (g): ")
 	fmt.Scanf("%f", &postWaterMass)
-	fmt.Print("ice temp: ")
+	fmt.Print("ice temp (C): ")
 	fmt.Scanf("%f", &iceTemp)
-	fmt.Print("post-ice mass: ")
+	fmt.Print("post-ice mass (g): ")
 	fmt.Scanf("%f", &postIceMass)
 
 	waterMass := postWaterMass - setupMass
