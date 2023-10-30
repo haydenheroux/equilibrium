@@ -9,6 +9,12 @@ import (
 func main() {
 	replayed, _ := Replay("replay.csv")
 
+	for _, point := range replayed {
+		fmt.Println(point)
+	}
+
+	fmt.Println(stats.LeastSquares(replayed))
+
 	var cupMass, cupTemp, setupMass, waterTemp, postWaterMass, iceTemp, postIceMass float64
 
 	fmt.Print("cup mass (g): ")
