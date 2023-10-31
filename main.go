@@ -1,13 +1,14 @@
 package main
 
 import (
+	"equilibrium/replay"
 	"equilibrium/stats"
 	"equilibrium/thermodynamics"
 	"fmt"
 )
 
 func main() {
-	replayed, _ := Replay("replay.csv")
+	replayed, _ := replay.Replay("replay.csv")
 
 	for _, point := range replayed {
 		fmt.Println(point)
@@ -58,4 +59,8 @@ func main() {
 	} else {
 		fmt.Printf("\nThe actual value is %.1f%% above the estimated value.\n\n", percentError)
 	}
+}
+
+func Replay(s string) {
+	panic("unimplemented")
 }
