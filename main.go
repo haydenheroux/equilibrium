@@ -16,12 +16,8 @@ func main() {
 
 	fmt.Println(stats.LeastSquares(replayed))
 
-	var cupMass, cupTemp, setupMass, waterTemp, postWaterMass, iceTemp, postIceMass float64
+	var setupMass, waterTemp, postWaterMass, iceTemp, postIceMass float64
 
-	fmt.Print("cup mass (g): ")
-	fmt.Scanf("%f", &cupMass)
-	fmt.Print("cup temp (C): ")
-	fmt.Scanf("%f", &cupTemp)
 	fmt.Print("setup mass (g): ")
 	fmt.Scanf("%f", &setupMass)
 	fmt.Print("water temp (C): ")
@@ -36,7 +32,7 @@ func main() {
 	waterMass := postWaterMass - setupMass
 	iceMass := postIceMass - postWaterMass
 
-	x := thermodynamics.EquilibriumTemperature(cupMass, cupTemp, waterMass, waterTemp, iceMass, iceTemp)
+	x := thermodynamics.EquilibriumTemperature(waterMass, waterTemp, iceMass, iceTemp)
 
 	estimatedTemp := stats.LeastSquares(replayed).Apply(x)
 
@@ -59,8 +55,4 @@ func main() {
 	} else {
 		fmt.Printf("\nThe actual value is %.1f%% above the estimated value.\n\n", percentError)
 	}
-}
-
-func Replay(s string) {
-	panic("unimplemented")
 }

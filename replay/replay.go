@@ -23,14 +23,14 @@ func Replay(name string) ([]stats.Point, error) {
 	ps := make([]stats.Point, n)
 
 	for i, record := range records {
-		cupMass, _ := strconv.ParseFloat(record[0], 64)
-		cupTemp, _ := strconv.ParseFloat(record[1], 64)
+		//cupMass, _ := strconv.ParseFloat(record[0], 64)
+		//cupTemp, _ := strconv.ParseFloat(record[1], 64)
 		waterMass, _ := strconv.ParseFloat(record[2], 64)
 		waterTemp, _ := strconv.ParseFloat(record[3], 64)
 		iceMass, _ := strconv.ParseFloat(record[4], 64)
 		iceTemp, _ := strconv.ParseFloat(record[5], 64)
 
-		estimate := thermodynamics.EquilibriumTemperature(cupMass, cupTemp, waterMass, waterTemp, iceMass, iceTemp)
+		estimate := thermodynamics.EquilibriumTemperature(waterMass, waterTemp, iceMass, iceTemp)
 
 		actual, _ := strconv.ParseFloat(record[6], 64)
 
