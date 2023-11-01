@@ -36,3 +36,25 @@ func EquilibriumTemperature(waterMass float64, waterTemp float64, iceMass float6
 
 	return remainingHeatCapacity * celsiusPerJoule
 }
+
+func EquilibriumTemperatureCup(cupMass float64, cupTemp float64, waterMass float64, waterTemp float64, iceMass float64, iceTemp float64) float64 {
+	cupHeatCapacity := HeatCapacity(cupMass, AluminumSpecificHeat, cupTemp)
+
+	liquidHeatCapacity := HeatCapacity(waterMass, WaterSpecificHeat, waterTemp)
+
+	iceToMeltHeatTransfer := HeatTransfer(iceMass, IceSpecificHeat, iceTemp, 0)
+
+	iceMeltLatentHeat := LatentHeat(iceMass, IceLatentHeatFusion)
+
+	remainingHeatCapacity := (cupHeatCapacity + liquidHeatCapacity) - (iceMeltLatentHeat + iceToMeltHeatTransfer)
+
+	cupDenominator := PartialHeatCapacity(cupMass, AluminumSpecificHeat)
+
+	totalWaterMass := waterMass + iceMass
+	waterDenominator := PartialHeatCapacity(totalWaterMass, WaterSpecificHeat)
+
+	joulesPerCelsius := waterDenominator + cupDenominator
+	celsiusPerJoule := 1 / joulesPerCelsius
+
+	return remainingHeatCapacity * celsiusPerJoule
+}
