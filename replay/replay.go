@@ -16,6 +16,7 @@ func Replay(name string) ([]stats.Point, error) {
 	}
 
 	reader := csv.NewReader(file)
+	reader.Comment = '#'
 
 	records, err := reader.ReadAll()
 	n := len(records)
