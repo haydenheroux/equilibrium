@@ -1,34 +1,8 @@
 package stats
 
 import (
-	"encoding/csv"
 	"fmt"
-	"os"
-	"strconv"
 )
-
-func LoadPoints(name string) ([]Point, error) {
-	file, err := os.Open(name)
-
-	if err != nil {
-		return []Point{}, nil
-	}
-
-	reader := csv.NewReader(file)
-
-	records, err := reader.ReadAll()
-
-	points := make([]Point, len(records))
-
-	for i, record := range records {
-		x, _ := strconv.ParseFloat(record[0], 64)
-		y, _ := strconv.ParseFloat(record[1], 64)
-
-		points[i] = Point{X: x, Y: y}
-	}
-
-	return points, nil
-}
 
 type Point struct {
 	X float64
